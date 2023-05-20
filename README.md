@@ -1,5 +1,4 @@
 # Budget-Planner
-# Budget Planner
 
 The Budget Planner is a simple application that helps you manage your personal finances by tracking your income, expenses, and savings goals. With this tool, you can gain better control over your money and make informed financial decisions.
 
