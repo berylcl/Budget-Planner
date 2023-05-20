@@ -27,13 +27,9 @@ The Budget Planner is a simple application that helps you manage your personal f
 
 ## Technologies Used
 
-- HTML, CSS, JavaScript: Building the frontend user interface.
-- React: JavaScript library for building user interfaces.
-- Node.js: Server-side JavaScript runtime environment.
-- Express.js: Web application framework for Node.js.
-- MongoDB: NoSQL database for storing user data.
-- Mongoose: Object Data Modeling (ODM) library for MongoDB.
-- Chart.js: JavaScript library for creating charts and visualizations.
+- HTML: Building the structure and layout of the web page.
+- CSS: Styling the user interface and enhancing the visual presentation.
+- JavaScript: Implementing the application's logic and interactivity.
 
 ## Contributing
 
