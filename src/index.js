@@ -70,11 +70,24 @@ function addTransactionDOM(id, source, amount, time){
     }
 }
 function getTransaction() {
+    incomeList.innerHTML = "";
+    expenseList.innerHTML = "";
+
     transactions.forEach(transaction => {
-        if (transaction.amount > 0) {
-            incomeList.innerHTML += generateTemplate(transaction.id, transaction.source, transaction.amount, transaction.time);
-        } else if (transaction.amount < 0) {
-            expenseList.innerHTML += generateTemplate(transaction.id, transaction.source, transaction.amount, transaction.time);
+        if (transaction.value > 0) {
+            incomeList.innerHTML += generateTemplate(
+                transaction.id,
+                transaction.source,
+                transaction.value,
+                transaction.time
+            );
+        } else {
+            expenseList.innerHTML += generateTemplate(
+                transaction.id,
+                transaction.source,
+                transaction.value,
+                transaction.time
+            );
         }
     });
 }
@@ -84,21 +97,29 @@ function deleteTransaction(id) {
         return transaction.id !== id;
     });
     localStorage.setItem("transactions", JSON.stringify(transactions));
-    updateStatistics(); // Update statistics after deleting a transaction
-}
-incomeList.addEventListener("click", event=>{
-    if(event.target.classList.contains("delete")){
-        event.target.parentElement.remove()
-        deleteTransaction(event.target.parentElement.dataset.id)
-    }
-})
 
-expenseList.addEventListener("click", event=>{
-    if(event.target.classList.contains("delete")){
-        event.target.parentElement.remove()
-        deleteTransaction(event.target.parentElement.dataset.id)
+    // Clear the income and expense lists before regenerating them
+    incomeList.innerHTML = "";
+    expenseList.innerHTML = "";
+
+    // Regenerate the transaction lists and update the balances
+    getTransaction();
+    updateStatistics();
+}
+
+incomeList.addEventListener("click", event => {
+    if (event.target.classList.contains("delete")) {
+        const listItem = event.target.closest("li");
+        listItem.remove();
     }
-})
+});
+
+expenseList.addEventListener("click", event => {
+    if (event.target.classList.contains("delete")) {
+        const listItem = event.target.closest("li");
+        listItem.remove();
+    }
+});
 
 
 function init(){
